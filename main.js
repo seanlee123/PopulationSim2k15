@@ -11,12 +11,20 @@ var forms = [];
 var timeBetweenHits = 300;
 var timeSinceHit = 0;
 var activeGame = true;
-var defaultFont = new font.Font("40px Arial");
+var defaultFont = new font.Font("30px Arial");
 var bestTwoOutOfThree = false;
 var player1Score = 0;
 var player1;
 var count = 0;
+var posArrX = [];
+var posArrY = [];
 console.log("asdljfa");
+function MakePositions(){
+
+}
+function GeneratePlants(){
+
+}
 function Player(placement, formIndex){
   this.placement = placement;
   this.yPlacement = 80;
@@ -27,6 +35,14 @@ function Player(placement, formIndex){
   this.mask = 16;
   this.hit = false;
   this.health = 30;
+};
+function Plant(placementx, placementy){
+  this.placementx = placementx;
+  this.placementy = placementy;
+};
+function Animal(placementx, placementy){
+  this.placementx = placementx;
+  this.placementy = placementy;
 };
 Player.prototype.changeForm = function(index) {
   this.form = forms[index];

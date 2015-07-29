@@ -131,7 +131,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [0, 45]);
+      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
 
     }
    }
@@ -153,15 +153,9 @@ var count = 0;
 
      player1.update(msDuration);
 
-<<<<<<< HEAD
      display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [160, 0]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
-=======
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 0]);
-     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
-      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 40]);
->>>>>>> c2c4835fde0728eb2d7a89d34f51cb398242baaf
 
       player1.draw(display);
 
@@ -209,7 +203,7 @@ gamejs.ready(main);
 var caveman = "caveman1.png";
 
 // target position
-var chaser = {
+var c = {
   x: 5,
   y: 7
 };
@@ -236,4 +230,4 @@ if (length) {
 // delta is the elapsed time in seconds
 // SPEED is the speed in units per second (UPS)
 caveman1.x += dx * delta * SPEED;
-caveman1.y += dy * delta * SPEED;
+caveman.y += dy * delta * SPEED;

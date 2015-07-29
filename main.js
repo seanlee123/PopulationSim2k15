@@ -2,8 +2,8 @@ console.log("beginning");
 var gamejs = require('gamejs');
 var font = require('gamejs/font');
 var mask = require('gamejs/mask');
-var screenWidth = 1200;
-var screenHeight = 600;
+var screenWidth = 2100;
+var screenHeight = 1500;
 var spriteSize = 128;
 var numSprites = 1;
 var up = 1, down = 2, left = 4, right = 8, canChange = 16; formChange = 32;
@@ -39,7 +39,7 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
-    if (this.yPlacement < 470) {
+    if (this.yPlacement < 1350) {
       this.yPlacement += 14;
     }
   };
@@ -48,7 +48,7 @@ Player.prototype.update = function(msDuration) {
       this.placement = this.placement - 14;
     }
   }else if(this.mask & right){
-    if(this.placement < 1000){
+    if(this.placement < 2000){
       this.placement = this.placement + 14;
     }
   }
@@ -131,7 +131,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [300, 150]);
+      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
 
     }
    }
@@ -153,9 +153,9 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [200, 0]);
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 510]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
-      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [400, 0]);
+      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 550]);
 
       player1.draw(display);
 

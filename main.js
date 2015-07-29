@@ -18,9 +18,14 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
+var numFood = 10;
 console.log("asdljfa");
 function MakePositions(){
+  for(this.counter = 0; this.counter<=numFood; this.counter ++){
+      posArrX[this.counter] = Math.floor(Math.random() * 2000);
+      posArrY[this.counter] = Math.floor(Math.random() * 1400);
 
+  }
 }
 function GeneratePlants(){
 
@@ -169,15 +174,9 @@ var count = 0;
 
      player1.update(msDuration);
 
-<<<<<<< HEAD
      display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [160, 0]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
-=======
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 0]);
-     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
-      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 40]);
->>>>>>> c2c4835fde0728eb2d7a89d34f51cb398242baaf
 
       player1.draw(display);
 
@@ -220,6 +219,7 @@ var count = 0;
   console.log("fpsCallback");
 };
 gamejs.preload(['caveman1.png']);
+gamejs.preload(['Nutalmond.png']);
 gamejs.ready(main);
 
 var caveman = "caveman1.png";

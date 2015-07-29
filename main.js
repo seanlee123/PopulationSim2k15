@@ -1,3 +1,7 @@
+confirm("Rules: Try to get more food to increase your population before you get too hungry and avoid the predators. Your score will tell
+you the number of people there are in your population.")
+confirm("Are you ready? Let's go!")
+
 var gamejs = require('gamejs');
 var font = require('gamejs/font');
 var mask = require('gamejs/mask');
@@ -58,7 +62,7 @@ Player.prototype.draw = function(display) {
 
 function main() {
   var display = gamejs.display.setMode([screenWidth, screenHeight]);
-  var sprites = gamejs.image.load('fireicewater.png');
+  var sprites = gamejs.image.load('caveman.png');
   var surfaceCache = [];
   var maskCache = [];
   for (var i = 0; i < numSprites; i++){
@@ -113,13 +117,64 @@ function main() {
     }
   };
 
+
+  private var thisTransform : Transform;
+ //private var velocity : Vector2;
+
+
+function Start()
+{
+        thisTransform = transform;
+}
+
+ //function LateUpdate()
+ {
+
+      thisTransform.position.x = Mathf.Lerp( thisTransform.position.x, target.position.x + xOffset, Time.deltaTime * smoothTime);
+
+        thisTransform.position.y = Mathf.Lerp( thisTransform.position.y, target.position.y + yOffset, Time.deltaTime * smoothTime);
+
+ }
+
+  // target position
+  var target = {
+    x: 5,
+    y: 7
+  };
+
+  // my position
+  var position = {
+    x: 9,
+    y: 9
+  };
+
+  // subtract (= difference vector)
+  var dx = target.x - position.x;
+  var dy = target.y - position.y;
+
+  // normalize (= direction vector)
+  // (a direction vector has a length of 1)
+  var length = Math.sqrt(dx * dx + dy * dy);
+  if (length) {
+    dx /= length;
+    dy /= length;
+  }
+
+  // move
+  // delta is the elapsed time in seconds
+  // SPEED is the speed in units per second (UPS)
+  position.x += dx * delta * SPEED;
+  position.y += dy * delta * SPEED;
+
+
+
   function gameTick(msDuration) {
     if(activeGame){
       gamejs.event.get().forEach(function(event) {
         handleEvent(event);
       });
       display.clear();
-      
+
       if(timeSinceHit > timeBetweenHits){
         var hasMaskOverlap = false;
         if (hasMaskOverlap) {
@@ -127,9 +182,9 @@ function main() {
       }else{
         timeSinceHit +=msDuration;
       };
-      
+
      player1.update(msDuration);
-    
+
       player1.draw(display);
 
       if(player1.health === 0){
@@ -138,7 +193,7 @@ function main() {
           display.blit(defaultFont.render("Player 1 Defeated", "#000000"), [0, 320]);
           player1Score--;
         }
-      
+
         if (!bestTwoOutOfThree) {
           var confirmMoreGame = confirm("Best two out of three?");
           if (confirmMoreGame) {
@@ -169,5 +224,5 @@ function restart() {
   console.log("restart");
 }
 
-gamejs.preload(['fireicewater.png']);
+gamejs.preload(['caveman.png']);
 gamejs.ready(main);

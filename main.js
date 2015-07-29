@@ -152,7 +152,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [0, 45]);
+      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
 
     }
    }
@@ -225,7 +225,7 @@ gamejs.ready(main);
 var caveman = "caveman1.png";
 
 // target position
-var chaser = {
+var c = {
   x: 5,
   y: 7
 };
@@ -252,4 +252,4 @@ if (length) {
 // delta is the elapsed time in seconds
 // SPEED is the speed in units per second (UPS)
 caveman1.x += dx * delta * SPEED;
-caveman1.y += dy * delta * SPEED;
+caveman.y += dy * delta * SPEED;

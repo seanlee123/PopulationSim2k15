@@ -131,7 +131,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
+      display.blit(defaultFont.render("You have died", "#000000"), [0, 45]);
 
     }
    }
@@ -153,9 +153,9 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [10, 510]);
+     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [160, 0]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
-      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 550]);
+      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);
 
@@ -200,23 +200,23 @@ var count = 0;
 gamejs.preload(['caveman1.png']);
 gamejs.ready(main);
 
-var caveman = "fireicewater.png";
+var caveman = "caveman1.png";
 
 // target position
-var c = {
+var chaser = {
   x: 5,
   y: 7
 };
 
 // my position
-var caveman = {
+var caveman1 = {
   x: 9,
   y: 9
 };
 
 // subtract (= difference vector)
-var dx = c.x - caveman.x;
-var dy = c.y - caveman.y;
+var dx = c.x - caveman1.x;
+var dy = c.y - caveman1.y;
 
 // normalize (= direction vector)
 // (a direction vector has a length of 1)
@@ -229,5 +229,5 @@ if (length) {
 // move
 // delta is the elapsed time in seconds
 // SPEED is the speed in units per second (UPS)
-caveman.x += dx * delta * SPEED;
-caveman.y += dy * delta * SPEED;
+caveman1.x += dx * delta * SPEED;
+caveman1.y += dy * delta * SPEED;

@@ -17,6 +17,23 @@
   </div>
   <canvas id="gjs-canvas" style="border-width: 5px; border-style: solid;"></canvas>
 
+<script>
+var canvas = document.getElementById("gjs-canvas"),
+    ctx = canvas.getContext("2d");
+    canvas.width = 2100;
+    canvas.height = 1500;
+
+var background = new Image();
+    background.src = "Grass.png";
+
+// Make sure the image is loaded first otherwise nothing will draw.
+background.onload = function(){
+    ctx.drawImage(background,0,0);
+}​
+
+// draw whatever else over top of it on the canvas.
+</script>
+
 </body>
 
 <script>

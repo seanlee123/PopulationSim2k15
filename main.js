@@ -128,7 +128,7 @@ var count = 0;
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-      display.blit(defaultFont.render("YOU DEAD BRUH", "#000000"), [300, 150]);
+      display.blit(defaultFont.render("You dead", "#000000"), [300, 150]);
     }
    }
     if(activeGame){
@@ -136,6 +136,7 @@ var count = 0;
         handleEvent(event);
       });
       display.clear();
+
       if(timeSinceHit > timeBetweenHits){
         var hasMaskOverlap = false;
         if (hasMaskOverlap) {
@@ -144,16 +145,43 @@ var count = 0;
       }else{
         timeSinceHit +=msDuration;
       };
-      player1.update(msDuration);
-    
-      display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [300, 0]);
 
+
+     player1.update(msDuration);
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [300, 0]);
+      player1.draw(display);
+      
+
+/*
       player1.draw(display);
   
       if(player1.health === 0 ){
         activeGame = false;
-       
-      };
+
+        if (player1.health === 0){
+          display.blit(defaultFont.render("Player 1 Defeated", "#000000"), [0, 320]);
+          player1Score--;
+        }
+/*
+        if (!bestTwoOutOfThree) {
+          var confirmMoreGame = confirm("Best two out of three?");
+          if (confirmMoreGame) {
+            restart();
+            bestTwoOutOfThree = true;
+          }
+        } else if ((player1Score > -2) && (player1Score < 2)) {
+          var confirmContinue = confirm("Continue?");
+          if (confirmContinue) {
+            restart();
+          }
+        } else {
+          var confirmExtraGames = confirm("One player died. More game?");
+          if (confirmExtraGames) {
+            location.reload();
+          }
+        }
+*/
+      //};
     };
   };
   var player1 = new Player(0, 3);

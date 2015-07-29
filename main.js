@@ -39,7 +39,7 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
-    if (this.yPlacement < 470) {
+    if (this.yPlacement < 1350) {
       this.yPlacement += 14;
     }
   };
@@ -48,7 +48,7 @@ Player.prototype.update = function(msDuration) {
       this.placement = this.placement - 14;
     }
   }else if(this.mask & right){
-    if(this.placement < 1000){
+    if(this.placement < 2000){
       this.placement = this.placement + 14;
     }
   }

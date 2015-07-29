@@ -5,7 +5,7 @@ var mask = require('gamejs/mask');
 var screenWidth = 1200;
 var screenHeight = 600;
 var spriteSize = 128;
-var numSprites = 4;
+var numSprites = 1;
 var up = 1, down = 2, left = 4, right = 8, canChange = 16; formChange = 32;
 var forms = [];
 var timeBetweenHits = 300;
@@ -64,7 +64,7 @@ Player.prototype.draw = function(display) {
 
 function main() {
   var display = gamejs.display.setMode([screenWidth, screenHeight]);
-  var sprites = gamejs.image.load('fireicewater.png');
+  var sprites = gamejs.image.load('caveman1.png');
   var surfaceCache = [];
   var maskCache = [];
   for (var i = 0; i < numSprites; i++){
@@ -80,6 +80,7 @@ function main() {
     {index: 0,
       image: surfaceCache[0],
       mask: maskCache[0]},
+      /*
     {index: 1,
       image: surfaceCache[1],
       mask: maskCache[1]},
@@ -89,6 +90,7 @@ function main() {
     {index: 3,
       image: surfaceCache[3],
       mask: maskCache[3]}
+      */
   ];
 
   function handleEvent(event) {
@@ -128,7 +130,7 @@ var count = 0;
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-      display.blit(defaultFont.render("You dead", "#000000"), [300, 150]);
+      display.blit(defaultFont.render("You dead", "#000000"), [500, 150]);
     }
    }
     if(activeGame){
@@ -148,7 +150,9 @@ var count = 0;
 
 
      player1.update(msDuration);
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [300, 0]);
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [200, 0]);
+     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
+      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [400, 0]);
       player1.draw(display);
       
 
@@ -184,10 +188,10 @@ var count = 0;
       //};
     };
   };
-  var player1 = new Player(0, 3);
+  var player1 = new Player(0, 0);
 
   gamejs.time.fpsCallback(gameTick, this, 60);
   console.log("fpsCallback");
 };
-gamejs.preload(['fireicewater.png']);
+gamejs.preload(['caveman1.png']);
 gamejs.ready(main);

@@ -1,10 +1,11 @@
+console.log("beginning");
 var gamejs = require('gamejs');
 var font = require('gamejs/font');
 var mask = require('gamejs/mask');
 var screenWidth = 1200;
 var screenHeight = 600;
 var spriteSize = 128;
-var numSprites = 4;
+var numSprites = 1;
 var up = 1, down = 2, left = 4, right = 8, canChange = 16; formChange = 32;
 var forms = [];
 var timeBetweenHits = 300;
@@ -14,9 +15,14 @@ var defaultFont = new font.Font("40px Arial");
 var bestTwoOutOfThree = false;
 var player1Score = 0;
 var player1;
+var count = 0;
+console.log("asdljfa");
 function Player(placement, formIndex){
   this.placement = placement;
   this.yPlacement = 80;
+  this.hunger = 10;
+  this.level = 1;
+  this.range = 1;
   this.form = forms[formIndex];
   this.mask = 16;
   this.hit = false;
@@ -58,7 +64,7 @@ Player.prototype.draw = function(display) {
 
 function main() {
   var display = gamejs.display.setMode([screenWidth, screenHeight]);
-  var sprites = gamejs.image.load('fireicewater.png');
+  var sprites = gamejs.image.load('caveman1.png');
   var surfaceCache = [];
   var maskCache = [];
   for (var i = 0; i < numSprites; i++){
@@ -74,6 +80,7 @@ function main() {
     {index: 0,
       image: surfaceCache[0],
       mask: maskCache[0]},
+      /*
     {index: 1,
       image: surfaceCache[1],
       mask: maskCache[1]},
@@ -83,6 +90,7 @@ function main() {
     {index: 3,
       image: surfaceCache[3],
       mask: maskCache[3]}
+      */
   ];
 
   function handleEvent(event) {
@@ -112,33 +120,57 @@ function main() {
       }
     }
   };
+var count = 0;
+//console.log("asdljfa");
+ function gameTick(msDuration) {
+   // console.log("hi");
+   count++;
+   if (count>= 100){
+    count = 0;
+    player1.hunger -= 0.5;
+    if (player1.hunger < 0){
+      activeGame = false;
 
-  function gameTick(msDuration) {
+      display.blit(defaultFont.render("You have died", "#000000"), [300, 150]);
+
+    }
+   }
     if(activeGame){
       gamejs.event.get().forEach(function(event) {
         handleEvent(event);
       });
       display.clear();
-      
+
       if(timeSinceHit > timeBetweenHits){
         var hasMaskOverlap = false;
         if (hasMaskOverlap) {
+
         };
       }else{
         timeSinceHit +=msDuration;
       };
-      
+
+
      player1.update(msDuration);
-    
+
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [200, 0]);
+     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
+      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [400, 0]);
+
       player1.draw(display);
 
-      if(player1.health === 0){
+
+/*
+      player1.draw(display);
+
+      if(player1.health === 0 ){
         activeGame = false;
+
         if (player1.health === 0){
           display.blit(defaultFont.render("Player 1 Defeated", "#000000"), [0, 320]);
           player1Score--;
         }
-      
+/*
         if (!bestTwoOutOfThree) {
           var confirmMoreGame = confirm("Best two out of three?");
           if (confirmMoreGame) {
@@ -156,18 +188,46 @@ function main() {
             location.reload();
           }
         }
-      };
+*/
+      //};
     };
   };
-  player1 = new Player(0, 3);
+  var player1 = new Player(0, 0);
+
   gamejs.time.fpsCallback(gameTick, this, 60);
+  console.log("fpsCallback");
+};
+gamejs.preload(['caveman1.png']);
+gamejs.ready(main);
+
+var caveman = "fireicewater.png";
+
+// target position
+var c = {
+  x: 5,
+  y: 7
 };
 
-function restart() {
-  activeGame = true;
-  player1 = new Player(0, 3);
-  console.log("restart");
+// my position
+var caveman = {
+  x: 9,
+  y: 9
+};
+
+// subtract (= difference vector)
+var dx = c.x - caveman.x;
+var dy = c.y - caveman.y;
+
+// normalize (= direction vector)
+// (a direction vector has a length of 1)
+var length = Math.sqrt(dx * dx + dy * dy);
+if (length) {
+  dx /= length;
+  dy /= length;
 }
 
-gamejs.preload(['fireicewater.png']);
-gamejs.ready(main);
+// move
+// delta is the elapsed time in seconds
+// SPEED is the speed in units per second (UPS)
+caveman.x += dx * delta * SPEED;
+caveman.y += dy * delta * SPEED;

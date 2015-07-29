@@ -11,13 +11,54 @@
   </script>
 </head>
 <body>
+
   <div id="gjs-loader">
    Loading...
   </div>
   <canvas id="gjs-canvas" style="border-width: 5px; border-style: solid;"></canvas>
+
 </body>
-<audio autoplay="autoplay" controls loop hidden> 
-   <source src="sound.mp3" />  
+
+<script>
+confirm("Rules: Try to get more food to increase your population before you get too hungry and avoid your predators.");
+</script>
+
+<script>
+confirm("Your score will tell you the number of people there are in your population.");
+</script>
+
+<script>
+confirm("Use the W, A, S, D keys to navigate.");
+</script>
+
+<script>
+confirm("Are you ready? Let's go!");
+</script>
+
+<script>
+prompt("What is your name?")
+</script>
+
+<script>
+  var canvas = document.getElementById("gjs-canvas");
+  var context = canvas.getContext("2d");
+    context.beginPath();
+    context.lineWidth = 3
+    context.fill();
+    context.fillStyle = "blue";
+    context.arc(150,150,40,0,2*Math.PI);
+    context.stroke();
+    context.strokeStyle = "pink";
+    context.fill();
+    context.stroke();
+</script>
+
+<!-- <script src="map.js"></script>
+
+<!-- This is the audio file code -->
+
+<audio autoplay="autoplay" controls loop hidden>
+   <source src="sound.mp3" />
 </audio>
 </script>
 </html>

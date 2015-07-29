@@ -153,9 +153,9 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 510]);
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 0]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
-      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 550]);
+      display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [10, 40]);
 
       player1.draw(display);
 

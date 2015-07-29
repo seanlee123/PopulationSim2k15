@@ -13,45 +13,42 @@
 <body>
 
   <div id="gjs-loader">
-   Loading...
+   Loading Game...
   </div>
-  <canvas id="gjs-canvas" style="border-width: 10px; border-style: solid; border-color: green; border-radius: 20px; box-shadow: 20px 20px 10px #888888; background-color: #F8F8F8;"></canvas>
+
+  <canvas id="gjs-canvas" style="border-width: 10px; border-style: solid; border-color: green;
+  border-radius: 20px; box-shadow: 20px 20px 10px #888888; background-color: #F8F8F8;"></canvas>
+
+<!-- Background grass.png-->
 
 <script>
+  var canvas = document.getElementById('gjs-Canvas');
+  var context = canvas.getContext('2d');
 
-  var background = new Image();
-background.src = "http://www.samskirrow.com/background.png";
+  var imageObj = new Image();
+  imageObj.onload = function() {
+  var pattern = context.createPattern(imageObj, 'repeat');
 
-// Make sure the image is loaded first otherwise nothing will draw.
-background.onload = function(){
-    ctx.drawImage(background,0,0);
-}​
+    context.rect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = pattern;
+    context.fill();
+};
 
-// draw whatever else over top of it on the canvas.
-
+  imageObj.src = 'C:\Users\MES\Desktop\PopulationSim2k15\Grass.png';
 </script>
 
 </body>
 
 <script>
-confirm("Rules: Try to get more food to increase your population before you get too hungry and avoid your predators.");
+  confirm("Rules: Try to get more food to increase your population before you get too hungry and avoid your predators.");
+  confirm("Your score will tell you the number of people there are in your population.");
+  confirm("Use the W, A, S, D keys to navigate.");
+  confirm("Are you ready? Let's go!");
+  prompt("What is your name?");
 </script>
 
-<script>
-confirm("Your score will tell you the number of people there are in your population.");
-</script>
-
-<script>
-confirm("Use the W, A, S, D keys to navigate.");
-</script>
-
-<script>
-confirm("Are you ready? Let's go!");
-</script>
-
-<script>
-prompt("What is your name?")
-</script>
+<!-- Code for circle that is going to chase the caveman. Just
+a placeholder... Circle will become predators.-->
 
 <script>
   var canvas = document.getElementById("gjs-canvas");

@@ -18,8 +18,12 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
+<<<<<<< HEAD
 var numFood = 10;
 console.log("asdljfa");
+=======
+console.log("middleish");
+>>>>>>> 9f0ab50e33c0b52b2a40b91f45f837fe7f3d421f
 function MakePositions(){
   for(this.counter = 0; this.counter<=numFood; this.counter ++){
       posArrX[this.counter] = Math.floor(Math.random() * 2000);
@@ -164,7 +168,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
+      display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
 
     }
    }
@@ -237,7 +241,7 @@ gamejs.ready(main);
 var caveman = "caveman1.png";
 
 // target position
-var c = {
+var chaser = {
   x: 5,
   y: 7
 };

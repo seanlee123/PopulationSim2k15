@@ -18,7 +18,7 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
-console.log("asdljfa");
+console.log("middleish");
 function MakePositions(){
 
 }
@@ -147,7 +147,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [10, 470]);
+      display.blit(defaultFont.render("You have died", "#000000"), [0, 120]);
 
     }
    }
@@ -219,7 +219,7 @@ gamejs.ready(main);
 var caveman = "caveman1.png";
 
 // target position
-var c = {
+var chaser = {
   x: 5,
   y: 7
 };

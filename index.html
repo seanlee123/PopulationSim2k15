@@ -12,22 +12,27 @@
 </head>
 <body>
 
+<img src="Grass.png" id="grass" width="4" height="4">
+
   <div id="gjs-loader">
    Loading...
   </div>
   <canvas id="gjs-canvas" style="border-width: 5px; border-style: solid;"></canvas>
 
+<!-- Background grass.png-->
+
 <script>
 
-  var background = new Image();
-background.src = "http://www.samskirrow.com/background.png";
-
-// Make sure the image is loaded first otherwise nothing will draw.
-background.onload = function(){
-    ctx.drawImage(background,0,0);
-}​
-
-// draw whatever else over top of it on the canvas.
+  function draw(direction) {
+      var canvas = document.getElementById("gjs-canvas");
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var img = document.getElementById("grass")
+      var pat = ctx.createPattern(img, direction);
+      ctx.rect(0, 0, 150, 100);
+      ctx.fillStyle = pat;
+      ctx.fill();
+  }
 
 </script>
 
@@ -52,6 +57,9 @@ confirm("Are you ready? Let's go!");
 <script>
 prompt("What is your name?")
 </script>
+
+<!-- Code for circle that is going to chase the caveman. Just
+a placeholder... Circle will become predators.-->
 
 <script>
   var canvas = document.getElementById("gjs-canvas");

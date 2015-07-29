@@ -130,7 +130,9 @@ var count = 0;
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-      display.blit(defaultFont.render("You dead", "#000000"), [500, 150]);
+
+      display.blit(defaultFont.render("You have died", "#000000"), [300, 150]);
+
     }
    }
     if(activeGame){
@@ -142,7 +144,7 @@ var count = 0;
       if(timeSinceHit > timeBetweenHits){
         var hasMaskOverlap = false;
         if (hasMaskOverlap) {
-          
+
         };
       }else{
         timeSinceHit +=msDuration;
@@ -150,15 +152,17 @@ var count = 0;
 
 
      player1.update(msDuration);
+
      display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [200, 0]);
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [400, 0]);
+
       player1.draw(display);
-      
+
 
 /*
       player1.draw(display);
-  
+
       if(player1.health === 0 ){
         activeGame = false;
 
@@ -195,3 +199,35 @@ var count = 0;
 };
 gamejs.preload(['caveman1.png']);
 gamejs.ready(main);
+
+var caveman = "fireicewater.png";
+
+// target position
+var c = {
+  x: 5,
+  y: 7
+};
+
+// my position
+var caveman = {
+  x: 9,
+  y: 9
+};
+
+// subtract (= difference vector)
+var dx = c.x - caveman.x;
+var dy = c.y - caveman.y;
+
+// normalize (= direction vector)
+// (a direction vector has a length of 1)
+var length = Math.sqrt(dx * dx + dy * dy);
+if (length) {
+  dx /= length;
+  dy /= length;
+}
+
+// move
+// delta is the elapsed time in seconds
+// SPEED is the speed in units per second (UPS)
+caveman.x += dx * delta * SPEED;
+caveman.y += dy * delta * SPEED;

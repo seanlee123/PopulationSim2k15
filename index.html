@@ -16,6 +16,7 @@
    Loading...
   </div>
   <canvas id="gjs-canvas" style="border-width: 5px; border-style: solid;"></canvas>
+
 </body>
 
 <script>
@@ -27,11 +28,29 @@ confirm("Your score will tell you the number of people there are in your populat
 </script>
 
 <script>
+confirm("Use the W, A, S, D keys to navigate.");
+</script>
+
+<script>
 confirm("Are you ready? Let's go!");
 </script>
 
 <script>
 prompt("What is your name?")
+</script>
+
+<script>
+  var canvas = document.getElementById("gjs-canvas");
+  var context = canvas.getContext("2d");
+    context.beginPath();
+    context.lineWidth = 3
+    context.fill();
+    context.fillStyle = "blue";
+    context.arc(150,150,40,0,2*Math.PI);
+    context.stroke();
+    context.strokeStyle = "pink";
+    context.fill();
+    context.stroke();
 </script>
 
 <!-- <script src="map.js"></script>

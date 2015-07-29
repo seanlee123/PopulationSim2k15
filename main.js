@@ -128,7 +128,7 @@ var count = 0;
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-      display.blit(defaultFont.render("You dead", "#000000"), [300, 150]);
+      display.blit(defaultFont.render("You have died", "#000000"), [300, 150]);
     }
    }
     if(activeGame){
@@ -140,7 +140,7 @@ var count = 0;
       if(timeSinceHit > timeBetweenHits){
         var hasMaskOverlap = false;
         if (hasMaskOverlap) {
-          
+
         };
       }else{
         timeSinceHit +=msDuration;
@@ -148,13 +148,13 @@ var count = 0;
 
 
      player1.update(msDuration);
-     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [300, 0]);
+     display.blit(defaultFont.render("Hunger:" + player1.hunger, "#000000"), [10, 550]);
       player1.draw(display);
-      
+
 
 /*
       player1.draw(display);
-  
+
       if(player1.health === 0 ){
         activeGame = false;
 

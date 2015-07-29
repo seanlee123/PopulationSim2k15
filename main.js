@@ -171,3 +171,35 @@ function restart() {
 
 gamejs.preload(['fireicewater.png']);
 gamejs.ready(main);
+
+var caveman = "fireicewater.png";
+
+// target position
+var c = {
+  x: 5,
+  y: 7
+};
+
+// my position
+var caveman = {
+  x: 9,
+  y: 9
+};
+
+// subtract (= difference vector)
+var dx = c.x - caveman.x;
+var dy = c.y - caveman.y;
+
+// normalize (= direction vector)
+// (a direction vector has a length of 1)
+var length = Math.sqrt(dx * dx + dy * dy);
+if (length) {
+  dx /= length;
+  dy /= length;
+}
+
+// move
+// delta is the elapsed time in seconds
+// SPEED is the speed in units per second (UPS)
+caveman.x += dx * delta * SPEED;
+caveman.y += dy * delta * SPEED;

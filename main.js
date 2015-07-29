@@ -28,7 +28,19 @@ function MakePositions(){
   }
 }
 function GeneratePlants(){
-
+    var display = gamejs.display.setMode([screenWidth, screenHeight]);
+  var sprites = gamejs.image.load('caveman1.png');
+  var surfaceCache = [];
+  var maskCache = [];
+  for (var i = 0; i < numSprites; i++){
+    var surface = new gamejs.Surface([spriteSize, spriteSize]);
+    var rect = new gamejs.Rect(spriteSize*i, 0, spriteSize, spriteSize);
+    var imgSize = new gamejs.Rect(1, 1, spriteSize, spriteSize);
+    surface.blit(sprites, imgSize, rect);
+    surfaceCache.push(surface);
+    var maskCacheElement = mask.fromSurface(surface);
+    maskCache.push(maskCacheElement);
+  };
 }
 function Player(placement, formIndex){
   this.placement = placement;
@@ -60,7 +72,7 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
-    if (this.yPlacement < 1350) {
+    if (this.yPlacement < 1150) {
       this.yPlacement += 14;
     }
   };
@@ -69,7 +81,7 @@ Player.prototype.update = function(msDuration) {
       this.placement = this.placement - 14;
     }
   }else if(this.mask & right){
-    if(this.placement < 2000){
+    if(this.placement < 2500){
       this.placement = this.placement + 14;
     }
   }

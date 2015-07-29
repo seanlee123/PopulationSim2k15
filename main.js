@@ -147,7 +147,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [0, 120]);
+      display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
 
     }
    }

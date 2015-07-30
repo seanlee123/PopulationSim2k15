@@ -210,7 +210,7 @@ var count = 0;
     if (player1.hunger < 0){
       activeGame = false;
 
-      display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
+      display.blit(defaultFont.render("You died", "#000000"), [0, 90]);
 
     }
    }
@@ -240,7 +240,7 @@ var count = 0;
      player1.update(msDuration);
 
      display.blit(defaultFont.render("Hunger: " + player1.hunger, "#DC143C"), [135, 0]);
-     display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
+     display.blit(defaultFont.render("Population: " + player1.level*100, "#000000"), [350, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);

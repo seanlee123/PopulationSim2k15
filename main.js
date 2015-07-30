@@ -36,10 +36,10 @@ var checkOverlap = function(player1){
     if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
       if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
         posArrX[counter]= -100;
-        posArrY[counter] = -100;  
+        posArrY[counter] = -100;
         plantArr[counter].placementx = -100;
-        plantArr[counter].placementy = -100;    
-        player1.hunger += 0.5;      
+        plantArr[counter].placementy = -100;
+        player1.hunger += 0.5;
       };
     };
   };
@@ -56,7 +56,7 @@ var makePositions = function(){
 var generatePlants =  function(){
 //  console.log("generateplants called");
   makePositions();
- 
+
   for (this.counter = 0; this.counter <= numFood; this.counter++){
     var p = new Plant(posArrX[this.counter], posArrY[this.counter]);
     //console.log("x "+ posArrX[this.counter] + "y " + posArrY[this.counter]);
@@ -244,7 +244,7 @@ var count = 0;
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);
-   
+
      checkOverlap(player1);
 
 /*

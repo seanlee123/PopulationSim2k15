@@ -111,8 +111,10 @@ Player.prototype.draw = function(display, arr) {
      };
 };
 Plant.prototype.draw = function(display, image) {
+  if (this.placementx >= 0){
   console.log("draw plant");
   display.blit(image, [this.placementx, this.placementy]);
+}
 };
 function main() {
   console.log("main");

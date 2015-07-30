@@ -37,8 +37,8 @@ var checkOverlap = function(player1){
       if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
         posArrX[counter]= -100;
         posArrY[counter] = -100;  
-        plantArr[counter].placementx = -10;
-        plantArr[counter].placementy = -10;    
+        plantArr[counter].placementx = -100;
+        plantArr[counter].placementy = -100;    
         player1.hunger += 0.5;      
       };
     };
@@ -243,16 +243,9 @@ var count = 0;
      display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
-<<<<<<< HEAD
-      player1.draw(display, arr);
-
-
-=======
       player1.draw(display);
    
      checkOverlap(player1);
->>>>>>> aeb9bf6270f2c70e60294c1cb91b8f881ed7f73e
-
 
 /*
       player1.draw(display);

@@ -18,12 +18,11 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
-<<<<<<< HEAD
+
 var numFood = 10;
-console.log("asdljfa");
-=======
+
 console.log("middleish");
->>>>>>> 9f0ab50e33c0b52b2a40b91f45f837fe7f3d421f
+
 function MakePositions(){
   for(this.counter = 0; this.counter<=numFood; this.counter ++){
       posArrX[this.counter] = Math.floor(Math.random() * 2000);
@@ -32,19 +31,22 @@ function MakePositions(){
   }
 }
 function GeneratePlants(){
+  /*
+  var spriteSize1 = 30;
     var display = gamejs.display.setMode([screenWidth, screenHeight]);
-  var sprites = gamejs.image.load('caveman1.png');
+  var sprites = gamejs.image.load('Nutalmond.png');
   var surfaceCache = [];
   var maskCache = [];
   for (var i = 0; i < numSprites; i++){
-    var surface = new gamejs.Surface([spriteSize, spriteSize]);
-    var rect = new gamejs.Rect(spriteSize*i, 0, spriteSize, spriteSize);
-    var imgSize = new gamejs.Rect(1, 1, spriteSize, spriteSize);
+    var surface = new gamejs.Surface([spriteSize1, spriteSize]);
+    var rect = new gamejs.Rect(posArrX[i], 0, spriteSize1, spriteSize1);
+    var imgSize = new gamejs.Rect(1, 1, spriteSize1, spriteSize1);
     surface.blit(sprites, imgSize, rect);
     surfaceCache.push(surface);
     var maskCacheElement = mask.fromSurface(surface);
     maskCache.push(maskCacheElement);
   };
+  */
 }
 function Player(placement, formIndex){
   this.placement = placement;

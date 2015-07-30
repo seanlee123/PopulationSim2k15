@@ -44,7 +44,7 @@ var generatePlants =  function(){
 
 return plantArr;
   };
-  
+
 
 //}
 
@@ -79,7 +79,7 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
-    if (this.yPlacement < 1150) {
+    if (this.yPlacement < 1180) {
       this.yPlacement += 14;
     }
   };
@@ -193,6 +193,13 @@ var count = 0;
 
     }
    }
+
+   if (player1.population < 0){
+     activeGame = false;
+
+     display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
+
+   }
     if(activeGame){
       gamejs.event.get().forEach(function(event) {
         handleEvent(event);
@@ -211,13 +218,13 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [160, 0]);
-     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
+     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [135, 0]);
+     display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display, arr);
-   
-     
+
+
 
 
 /*
@@ -259,6 +266,8 @@ var count = 0;
 };
 gamejs.preload(['caveman1.png']);
 gamejs.preload(['Nutalmond.png']);
+gamejs.preload(['Berries.png']);
+gamejs.preload(['Plant.png']);
 gamejs.ready(main);
 
 var caveman = "caveman1.png";

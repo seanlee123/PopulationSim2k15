@@ -18,12 +18,35 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
-console.log("middleish");
-function MakePositions(){
 
+var numFood = 10;
+
+console.log("middleish");
+
+function MakePositions(){
+  for(this.counter = 0; this.counter<=numFood; this.counter ++){
+      posArrX[this.counter] = Math.floor(Math.random() * 2000);
+      posArrY[this.counter] = Math.floor(Math.random() * 1400);
+
+  }
 }
 function GeneratePlants(){
-
+  /*
+  var spriteSize1 = 30;
+    var display = gamejs.display.setMode([screenWidth, screenHeight]);
+  var sprites = gamejs.image.load('Nutalmond.png');
+  var surfaceCache = [];
+  var maskCache = [];
+  for (var i = 0; i < numSprites; i++){
+    var surface = new gamejs.Surface([spriteSize1, spriteSize]);
+    var rect = new gamejs.Rect(posArrX[i], 0, spriteSize1, spriteSize1);
+    var imgSize = new gamejs.Rect(1, 1, spriteSize1, spriteSize1);
+    surface.blit(sprites, imgSize, rect);
+    surfaceCache.push(surface);
+    var maskCacheElement = mask.fromSurface(surface);
+    maskCache.push(maskCacheElement);
+  };
+  */
 }
 function Player(placement, formIndex){
   this.placement = placement;
@@ -56,7 +79,11 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
+<<<<<<< HEAD
     if (this.yPlacement < 1190) {
+=======
+    if (this.yPlacement < 1150) {
+>>>>>>> 28f01de662d4da88dcfa5164cd81a5303c35d014
       this.yPlacement += 14;
     }
   };
@@ -65,7 +92,11 @@ Player.prototype.update = function(msDuration) {
       this.placement = this.placement - 14;
     }
   }else if(this.mask & right){
+<<<<<<< HEAD
     if(this.placement < 2525){
+=======
+    if(this.placement < 2500){
+>>>>>>> 28f01de662d4da88dcfa5164cd81a5303c35d014
       this.placement = this.placement + 14;
     }
   }
@@ -215,6 +246,7 @@ var count = 0;
   console.log("fpsCallback");
 };
 gamejs.preload(['caveman1.png']);
+gamejs.preload(['Nutalmond.png']);
 gamejs.ready(main);
 
 // Code for predators chasing caveman

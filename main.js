@@ -34,12 +34,14 @@ var checkOverlap = function(player1){
     px = player1.placement;
     py = player1.yPlacement;
     if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
+
       if ((py > y&& py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
         posArrX[counter]= -200;
         posArrY[counter] = -200;  
         plantArr[counter].placementx = -200;
         plantArr[counter].placementy = -200;    
         player1.hunger += 0.5;      
+
       };
     };
   };
@@ -56,7 +58,7 @@ var makePositions = function(){
 var generatePlants =  function(){
 //  console.log("generateplants called");
   makePositions();
- 
+
   for (this.counter = 0; this.counter <= numFood; this.counter++){
     var p = new Plant(posArrX[this.counter], posArrY[this.counter]);
     //console.log("x "+ posArrX[this.counter] + "y " + posArrY[this.counter]);
@@ -239,12 +241,12 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [135, 0]);
+     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#DC143C"), [135, 0]);
      display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);
-   
+
      checkOverlap(player1);
 
 /*

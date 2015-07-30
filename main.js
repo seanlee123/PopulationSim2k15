@@ -239,7 +239,7 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [135, 0]);
+     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#DC143C"), [135, 0]);
      display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 

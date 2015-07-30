@@ -1,4 +1,4 @@
-console.log("beginning");
+//console.log("beginning");
 var gamejs = require('gamejs');
 var font = require('gamejs/font');
 var mask = require('gamejs/mask');
@@ -23,31 +23,31 @@ var numFood = 10;
 
 console.log("middleish");
 
-function MakePositions(){
+var makePositions = function(){
+  console.log("makepos called");
   for(this.counter = 0; this.counter<=numFood; this.counter ++){
       posArrX[this.counter] = Math.floor(Math.random() * 2000);
       posArrY[this.counter] = Math.floor(Math.random() * 1400);
 
-  }
-}
-function GeneratePlants(){
-  /*
-  var spriteSize1 = 30;
-    var display = gamejs.display.setMode([screenWidth, screenHeight]);
-  var sprites = gamejs.image.load('Nutalmond.png');
-  var surfaceCache = [];
-  var maskCache = [];
-  for (var i = 0; i < numSprites; i++){
-    var surface = new gamejs.Surface([spriteSize1, spriteSize]);
-    var rect = new gamejs.Rect(posArrX[i], 0, spriteSize1, spriteSize1);
-    var imgSize = new gamejs.Rect(1, 1, spriteSize1, spriteSize1);
-    surface.blit(sprites, imgSize, rect);
-    surfaceCache.push(surface);
-    var maskCacheElement = mask.fromSurface(surface);
-    maskCache.push(maskCacheElement);
   };
-  */
-}
+};
+
+var generatePlants =  function(){
+  console.log("generateplants called");
+  makePositions();
+  var plantArr = [];
+  for (this.counter = 0; this.counter <= numFood; this.counter++){
+    var p = new Plant(posArrX[this.counter], posArrY[this.counter]);
+    console.log("x "+ posArrX[this.counter] + "y " + posArrY[this.counter]);
+     plantArr[this.counter] = p;
+  };
+
+return plantArr;
+  };
+  
+
+//}
+
 function Player(placement, formIndex){
   this.placement = placement;
   this.yPlacement = 80;
@@ -63,6 +63,7 @@ function Plant(placementx, placementy){
   this.placementx = placementx;
   this.placementy = placementy;
 };
+
 function Animal(placementx, placementy){
   this.placementx = placementx;
   this.placementy = placementy;
@@ -97,11 +98,25 @@ Player.prototype.update = function(msDuration) {
   };
 };
 
-Player.prototype.draw = function(display) {
+Player.prototype.draw = function(display, arr) {
+  console.log("draw player");
   display.blit(this.form.image, [this.placement, this.yPlacement]);
-};
+  var counterMain = 0;
+   var image = gamejs.image.load('Nutalmond.png');
+    while (counterMain < numFood){
 
+     counterMain++;
+      console.log("loop" + counterMain);
+        arr[counterMain].draw(display, image);
+     };
+};
+Plant.prototype.draw = function(display, image) {
+  console.log("draw plant");
+  display.blit(image, [this.placementx, this.placementy]);
+};
 function main() {
+  console.log("main");
+  var counterMain = 0;
   var display = gamejs.display.setMode([screenWidth, screenHeight]);
   var sprites = gamejs.image.load('caveman1.png');
   var surfaceCache = [];
@@ -115,6 +130,8 @@ function main() {
     var maskCacheElement = mask.fromSurface(surface);
     maskCache.push(maskCacheElement);
   };
+ var arr = generatePlants();
+
   forms = [
     {index: 0,
       image: surfaceCache[0],
@@ -196,7 +213,9 @@ var count = 0;
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
-      player1.draw(display);
+      player1.draw(display, arr);
+   
+     
 
 
 /*

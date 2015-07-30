@@ -35,8 +35,8 @@ var checkOverlap = function(player1){
     py = player1.yPlacement;
     if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
       if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
-        posArrX[counter]= -10;
-        posArrY[counter] = -10;  
+        posArrX[counter]= -100;
+        posArrY[counter] = -100;  
         plantArr[counter].placementx = -10;
         plantArr[counter].placementy = -10;    
         player1.hunger += 0.5;      

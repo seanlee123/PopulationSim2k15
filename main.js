@@ -34,11 +34,11 @@ var checkOverlap = function(player1){
     px = player1.placement;
     py = player1.yPlacement;
     if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
-      if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
-        posArrX[counter]= -100;
-        posArrY[counter] = -100;  
-        plantArr[counter].placementx = -100;
-        plantArr[counter].placementy = -100;    
+      if ((py > y&& py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
+        posArrX[counter]= -200;
+        posArrY[counter] = -200;  
+        plantArr[counter].placementx = -200;
+        plantArr[counter].placementy = -200;    
         player1.hunger += 0.5;      
       };
     };

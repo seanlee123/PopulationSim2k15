@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+  <title>Fighting</title>
+  <script src="yabble.js"></script>
+  <script src="game.js"></script>
+  <script>
+      require.setModuleRoot('./');
+      require.run('main')
+  </script>
+</head>
+<body>
+
+  <div id="gjs-loader">
+   Loading Game...
+  </div>
+
+  <canvas id="gjs-canvas" style="border-width: 10px; border-style: solid; border-color: green;
+  border-radius: 20px; box-shadow: 20px 20px 10px #888888; background-color: #F8F8F8;"></canvas>
+
+<!-- Background grass.png-->
+
+<script>
+  var canvas = document.getElementById('gjs-Canvas');
+  var context = canvas.getContext('2d');
+
+  var imageObj = new Image();
+  imageObj.onload = function() {
+    var pattern = context.createPattern(imageObj, 'repeat');
+
+    context.rect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = pattern;
+    context.fill();
+};
+
+  imageObj.src = 'Users\MES\Desktop\PopulationSim2k15\Grass.png';
+</script>
+
+</body>
+
+<script>
+  confirm("Rules: Try to get more food to increase your population before you get too hungry and avoid your predators.");
+  confirm("Your score will tell you the number of people there are in your population.");
+  confirm("Use the W, A, S, D keys to navigate.");
+  confirm("Are you ready? Let's go!");
+  prompt("What is your name?");
+</script>
+
+<!-- Code for circle that is going to chase the caveman. Just
+a placeholder... Circle will become predators.-->
+
+<script>
+  var canvas = document.getElementById("gjs-canvas");
+  var context = canvas.getContext("2d");
+    context.beginPath();
+    context.lineWidth = 3
+    context.fill();
+    context.fillStyle = "blue";
+    context.arc(150,150,40,0,2*Math.PI);
+    context.stroke();
+    context.strokeStyle = "pink";
+    context.fill();
+    context.stroke();
+</script>
+
+<!-- <script src="map.js"></script>
+
+<!-- This is the audio file code -->
+
+<audio autoplay="autoplay" controls loop hidden>
+   <source src="sound.mp3" />
+</audio>
+</script>
+</html>

@@ -30,6 +30,7 @@ function Player(placement, formIndex){
   this.yPlacement = 80;
   this.hunger = 10;
   this.level = 1;
+  this.score = 0;
   this.range = 1;
   this.form = forms[formIndex];
   this.mask = 16;
@@ -55,7 +56,7 @@ Player.prototype.update = function(msDuration) {
     }
   }
   if(this.mask & down){
-    if (this.yPlacement < 1350) {
+    if (this.yPlacement < 1190) {
       this.yPlacement += 14;
     }
   };
@@ -64,7 +65,7 @@ Player.prototype.update = function(msDuration) {
       this.placement = this.placement - 14;
     }
   }else if(this.mask & right){
-    if(this.placement < 2000){
+    if(this.placement < 2525){
       this.placement = this.placement + 14;
     }
   }
@@ -169,8 +170,8 @@ var count = 0;
 
      player1.update(msDuration);
 
-     display.blit(defaultFont.render("Hunger: " + player1.hunger, "#000000"), [160, 0]);
-     // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
+      display.blit(defaultFont.render("Hunger: " + player1.hunger, "#8B0000"), [140, 0]);
+      display.blit(defaultFont.render("Population: " + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);
@@ -216,7 +217,10 @@ var count = 0;
 gamejs.preload(['caveman1.png']);
 gamejs.ready(main);
 
+// Code for predators chasing caveman
+
 var caveman = "caveman1.png";
+var chaser = "boar.png"
 
 // target position
 var chaser = {
@@ -225,14 +229,14 @@ var chaser = {
 };
 
 // my position
-var caveman1 = {
+var caveman = {
   x: 9,
   y: 9
 };
 
 // subtract (= difference vector)
-var dx = c.x - caveman1.x;
-var dy = c.y - caveman1.y;
+var dx = c.x - caveman.x;
+var dy = c.y - caveman.y;
 
 // normalize (= direction vector)
 // (a direction vector has a length of 1)
@@ -245,5 +249,5 @@ if (length) {
 // move
 // delta is the elapsed time in seconds
 // SPEED is the speed in units per second (UPS)
-caveman1.x += dx * delta * SPEED;
+caveman.x += dx * delta * SPEED;
 caveman.y += dy * delta * SPEED;

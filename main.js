@@ -18,13 +18,34 @@ var player1;
 var count = 0;
 var posArrX = [];
 var posArrY = [];
-
+var plantArr = [];
 var numFood = 10;
 
 console.log("middleish");
-
+var checkOverlap = function(player1){
+  var foodSize = 30;
+  var x;
+  var y;
+  var px;
+  var py;
+  for(var counter = 0; counter <= numFood; counter++  ){
+    x = posArrX[counter];
+    y = posArrY[counter];
+    px = player1.placement;
+    py = player1.yPlacement;
+    if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
+      if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
+        posArrX[counter]= -10;
+        posArrY[counter] = -10;  
+        plantArr[counter].placementx = -10;
+        plantArr[counter].placementy = -10;    
+        player1.hunger += 0.5;      
+      };
+    };
+  };
+};
 var makePositions = function(){
-  console.log("makepos called");
+ // console.log("makepos called");
   for(this.counter = 0; this.counter<=numFood; this.counter ++){
       posArrX[this.counter] = Math.floor(Math.random() * 2000);
       posArrY[this.counter] = Math.floor(Math.random() * 1400);
@@ -33,16 +54,16 @@ var makePositions = function(){
 };
 
 var generatePlants =  function(){
-  console.log("generateplants called");
+//  console.log("generateplants called");
   makePositions();
-  var plantArr = [];
+ 
   for (this.counter = 0; this.counter <= numFood; this.counter++){
     var p = new Plant(posArrX[this.counter], posArrY[this.counter]);
-    console.log("x "+ posArrX[this.counter] + "y " + posArrY[this.counter]);
+    //console.log("x "+ posArrX[this.counter] + "y " + posArrY[this.counter]);
      plantArr[this.counter] = p;
   };
 
-return plantArr;
+//return plantArr;
   };
   
 
@@ -98,26 +119,26 @@ Player.prototype.update = function(msDuration) {
   };
 };
 
-Player.prototype.draw = function(display, arr) {
-  console.log("draw player");
+Player.prototype.draw = function(display) {
+ // console.log("draw player");
   display.blit(this.form.image, [this.placement, this.yPlacement]);
   var counterMain = 0;
    var image = gamejs.image.load('Nutalmond.png');
     while (counterMain < numFood){
 
      counterMain++;
-      console.log("loop" + counterMain);
-        arr[counterMain].draw(display, image);
+      //console.log("loop" + counterMain);
+        plantArr[counterMain].draw(display, image);
      };
 };
 Plant.prototype.draw = function(display, image) {
   if (this.placementx >= 0){
-  console.log("draw plant");
+ // console.log("draw plant");
   display.blit(image, [this.placementx, this.placementy]);
 }
 };
 function main() {
-  console.log("main");
+  //console.log("main");
   var counterMain = 0;
   var display = gamejs.display.setMode([screenWidth, screenHeight]);
   var sprites = gamejs.image.load('caveman1.png');
@@ -132,7 +153,7 @@ function main() {
     var maskCacheElement = mask.fromSurface(surface);
     maskCache.push(maskCacheElement);
   };
- var arr = generatePlants();
+generatePlants();
 
   forms = [
     {index: 0,
@@ -215,9 +236,9 @@ var count = 0;
      // display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [400, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
-      player1.draw(display, arr);
+      player1.draw(display);
    
-     
+     checkOverlap(player1);
 
 
 /*
@@ -255,7 +276,7 @@ var count = 0;
   var player1 = new Player(0, 0);
 
   gamejs.time.fpsCallback(gameTick, this, 60);
-  console.log("fpsCallback");
+  //console.log("fpsCallback");
 };
 gamejs.preload(['caveman1.png']);
 gamejs.preload(['Nutalmond.png']);

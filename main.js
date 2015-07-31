@@ -19,9 +19,9 @@ var count = 0;
 var posArrX = [];
 var posArrY = [];
 var plantArr = [];
-var numFood = 20;
+var numFood = 10;
 
-//console.log("middleish");
+console.log("middleish");
 var checkOverlap = function(player1){
   var foodSize = 30;
   var x;
@@ -31,13 +31,16 @@ var checkOverlap = function(player1){
   for(var counter = 0; counter <= numFood; counter++  ){
     x = posArrX[counter];
     y = posArrY[counter];
+    px = player1.placement;
+    py = player1.yPlacement;
+    if ((px > x && px < x + spriteSize)||(px+foodSize > x && px+foodSize < x + spriteSize)){
 
-      if ((py > y && py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
+      if ((py > y&& py < y+ spriteSize)||(py+foodSize > y && py+foodSize < y + spriteSize)){
         posArrX[counter]= -200;
-        posArrY[counter] = -200;
+        posArrY[counter] = -200;  
         plantArr[counter].placementx = -200;
-        plantArr[counter].placementy = -200;
-        player1.hunger += 0.5;
+        plantArr[counter].placementy = -200;    
+        player1.hunger += 0.5;      
 
       };
     };
@@ -145,27 +148,12 @@ Player.prototype.draw = function(display) {
         plantArr[counterMain].draw(display, image);
      };
 };
-
 Plant.prototype.draw = function(display, image) {
   if (this.placementx >= 0){
  // console.log("draw plant");
   display.blit(image, [this.placementx, this.placementy]);
 }
 };
-
-// Player.prototype.draw = function(display) {
- // console.log("draw player");
-//  display.blit(this.form.image, [this.placement, this.yPlacement]);
-//  var counterMain = 0;
-//   var image = gamejs.image.load('Plant.png');
-//    while (counterMain < numFood){
-
-//     counterMain++;
-      //console.log("loop" + counterMain);
-//        plantArr[counterMain].draw(display, image);
-//     };
-//};
-
 function main() {
   //console.log("main");
   var counterMain = 0;
@@ -240,7 +228,6 @@ var count1
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-
       console.log("hihihi");
       display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
 
@@ -257,7 +244,6 @@ var count1
      display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
 
    }
-
     if(activeGame){
       gamejs.event.get().forEach(function(event) {
         handleEvent(event);
@@ -277,7 +263,7 @@ var count1
      player1.update(msDuration);
 
      display.blit(defaultFont.render("Hunger: " + player1.hunger, "#DC143C"), [135, 0]);
-     display.blit(defaultFont.render("Population: " + player1.level*100, "#000000"), [350, 0]);
+     display.blit(defaultFont.render("Population:" + player1.level*100, "#000000"), [320, 0]);
       display.blit(defaultFont.render("Level: " + player1.level, "#000000"), [0, 0]);
 
       player1.draw(display);
@@ -325,16 +311,6 @@ gamejs.preload(['caveman1.png']);
 gamejs.preload(['Nutalmond.png']);
 gamejs.preload(['Berries.png']);
 gamejs.preload(['Plant.png']);
-gamejs.preload(['Bear.png']);
-gamejs.preload(['Wolf.png']);
-gamejs.preload(['Deer.png']);
-gamejs.preload(['Boar.png']);
-gamejs.preload(['Buffalo.png']);
-gamejs.preload(['Armadillo.png']);
-gamejs.preload(['Bird.png']);
-gamejs.preload(['Mammoth.png']);
-gamejs.preload(['Squirrel.png']);
-gamejs.preload(['Fly.png']);
 gamejs.ready(main);
 
 var caveman = "caveman1.png";
@@ -346,14 +322,14 @@ var chaser = {
 };
 
 // my position
-var caveman = {
+var caveman1 = {
   x: 9,
   y: 9
 };
 
 // subtract (= difference vector)
-var dx = c.x - caveman.x;
-var dy = c.y - caveman.y;
+var dx = c.x - caveman1.x;
+var dy = c.y - caveman1.y;
 
 // normalize (= direction vector)
 // (a direction vector has a length of 1)
@@ -366,5 +342,5 @@ if (length) {
 // move
 // delta is the elapsed time in seconds
 // SPEED is the speed in units per second (UPS)
-caveman.x += dx * delta * SPEED;
+caveman1.x += dx * delta * SPEED;
 caveman.y += dy * delta * SPEED;

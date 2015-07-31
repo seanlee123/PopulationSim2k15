@@ -69,6 +69,7 @@ var generatePlants =  function(){
   };
 
 var respawn = function(){
+  console.log("respawn");
   var y = 0;
   for (var x = 0; x < numFood; x++){
     if (plantArr[x].placementx >= 0){
@@ -77,9 +78,11 @@ var respawn = function(){
   };
   if (y >= 3){
       for (var x = 0; x < numFood; x++){
-         if (plantArr[x].placementx >= 0){
-                 plantArrX[this.counter] = Math.floor(Math.random() * 2000);
-                 plantArrY[this.counter] = Math.floor(Math.random() * 1400);
+         if (plantArr[x].placementx <= 0){
+          posArrX[x] = Math.floor(Math.random() * 2000);
+        posArrY[x] = Math.floor(Math.random() * 1400);
+                 plantArr[x].placementx =posArrX[x];
+                 plantArr[x].placementy =posArrY[x] ;
           };
        };
   };
@@ -217,7 +220,7 @@ generatePlants();
     }
   };
 var count = 0;
-var count1
+var count1=0;
 //console.log("asdljfa");
  function gameTick(msDuration) {
    // console.log("hi");

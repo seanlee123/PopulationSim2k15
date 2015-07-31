@@ -68,7 +68,22 @@ var generatePlants =  function(){
 //return plantArr;
   };
 
-
+var respawn = function(){
+  var y = 0;
+  for (var x = 0; x < numFood; x++){
+    if (plantArr[x].placementx >= 0){
+      y++;
+    };
+  };
+  if (y >= 3){
+      for (var x = 0; x < numFood; x++){
+         if (plantArr[x].placementx >= 0){
+                 plantArrX[this.counter] = Math.floor(Math.random() * 2000);
+                 plantArrY[this.counter] = Math.floor(Math.random() * 1400);
+          };
+       };
+  };
+}
 //}
 
 function Player(placement, formIndex){
@@ -202,19 +217,25 @@ generatePlants();
     }
   };
 var count = 0;
+var count1
 //console.log("asdljfa");
  function gameTick(msDuration) {
    // console.log("hi");
    count++;
+   count1++;
    if (count>= 100){
     count = 0;
     player1.hunger -= 0.5;
     if (player1.hunger < 0){
       activeGame = false;
-
+      console.log("hihihi");
       display.blit(defaultFont.render("You have died", "#000000"), [0, 90]);
 
     }
+   }
+   if (count1 >= 500){
+    count1 = 0;
+    respawn();
    }
 
    if (player1.population < 0){

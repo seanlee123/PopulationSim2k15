@@ -81,47 +81,47 @@
   var track = false;
   setInterval(function(){
 if (!maintrack){
-  var c = document.getElementById("gjs-canvas");
-  var ctx= c.getContext("2d");
-  ctx.beginPath();
-  ctx.clearRect(0,0,500,500);
-  var circlex = circ.xcorc();
-  var circley = circ.ycorc();
-  var recx = rectangle.xcor();
-  var recy = rectangle.ycor();
-  var xvalue = vectX(circlex, circley, recx, recy);
-  var yvalue = vectY(circlex, circley, recx, recy);
-  rectangle.drawRect(xvalue, yvalue);
-  circ.drawCircle(0,0,0)
-if(!track){
-  var vecX = circlex - recx ;
-  var vecY = circley - recy ;
-  var distance = Math.sqrt(((vecX)*(vecX)) + ((vecY)*(vecY)));
-if (distance <= 50){
-  track = true;
-  var elapsed = new Date() - start;
-  alert("You lost 50 people! Score = " +elapsed);
-if (ask){
-  track = false;
-  ctx.clearRect(0, 0, 500, 500);
-  rectangle.drawRect(-recx+50, -recy+50);
-  circ.drawCircle(-circlex + 150,-circley+ 200,0)
-  start = new Date();
+    var c = document.getElementById("gjs-canvas");
+    var ctx= c.getContext("2d");
+    ctx.beginPath();
+    ctx.clearRect(0,0,500,500);
+    var circlex = circ.xcorc();
+    var circley = circ.ycorc();
+    var recx = rectangle.xcor();
+    var recy = rectangle.ycor();
+    var xvalue = vectX(circlex, circley, recx, recy);
+    var yvalue = vectY(circlex, circley, recx, recy);
+    rectangle.drawRect(xvalue, yvalue);
+    circ.drawCircle(0,0,0)
+  if(!track){
+      var vecX = circlex - recx ;
+      var vecY = circley - recy ;
+      var distance = Math.sqrt(((vecX)*(vecX)) + ((vecY)*(vecY)));
+    if (distance <= 50){
+        track = true;
+        var elapsed = new Date() - start;
+        alert("You lost 50 people! Score = " +elapsed);
+      if (ask){
+        track = false;
+        ctx.clearRect(0, 0, 500, 500);
+        rectangle.drawRect(-recx+50, -recy+50);
+        circ.drawCircle(-circlex + 150,-circley+ 200,0)
+        start = new Date();
 
-}
-else
-{
-  maintrack = true;
-  ctx.clearRect(0, 0, 500, 500);
-ctx.font="50px Georgia";
-ctx.fillText("Game Over!",10,50);
+      }
+      else
+      {
+        maintrack = true;
+        ctx.clearRect(0, 0, 500, 500);
+      ctx.font="50px Georgia";
+      ctx.fillText("Game Over!",10,50);
 
+      }
+    }
+  }
 }
 }
-}
-}
-}
-,100);
+
 
 function Rect(xval, yval, length, width){
   var c = document.getElementById("myCanvas");
